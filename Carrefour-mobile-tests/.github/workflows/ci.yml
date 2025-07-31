@@ -1,19 +1,52 @@
 name: Testes Mobile com Emulador
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:  # permite execução manual via GitHub
 
 jobs:
-  test-mobile:
-    runs-on: self-hosted
+  android-tests:
+    runs-on: self-hosted  # usa seu runner com Android Studio
 
     steps:
-      - name: Checkout do código
+      - name: 🔄 Checkout do código
         uses: actions/checkout@v3
 
-      - name: Executar testes
-        run: mvn test
+      - name: ☕ Verificar Java
+        run: java -version
+
+      - name: 📱 Iniciar emulador Android
+        run: |
+          echo "Iniciando emulador Pixel_6..."
+          $ANDROID_HOME/emulator/emulator -avd Pixel_6 -no-window -no-audio -gpu off &
+          echo "Aguardando dispositivo..."
+          adb wait-for-device
+          echo "Desbloqueando tela..."
+          adb shell input keyevent 82
+        shell: bash
+
+
+
+      - name: 🚀 Iniciar Appium
+        run: |
+          echo "Iniciando Appium..."
+          appium &
+        shell: bash
+
+      - name: 🧪 Executar testes com Maven
+        run: |
+          echo "Executando testes..."
+          mvn test
+        shell: bash
+
+      - name: 📊 Publicar relatório Surefire
+        uses: actions/upload-artifact@v3
+        with:
+          name: surefire-report
+          path: target/surefire-reports/
+
+      - name: 📸 Upload de screenshots
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: target/screenshots/
 
