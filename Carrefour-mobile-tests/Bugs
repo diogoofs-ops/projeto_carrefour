@@ -1,0 +1,12 @@
+Login - Não esta validando senha inválida, sendo aceito qualquer dado que contenha mais de 8 caracteres.
+
+Login - Não esta validando e-mail com o banco de dados, sendo aceito qualquer e-mail.
+
+Login - Botão Login após efetuar o cadastro, ele não retorna para tela inicial
+
+Forms - Botão Inactive não habilita de forma alguma
+
+Forms- Botão Active após clicar em OK o app não retorna para tela inicial
+
+
+

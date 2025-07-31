@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.carrefour.api.tests.LoadTest" time="2.23" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\m.araujo.parmacene\OneDrive - Avanade\Desktop\carrefour-api-tests\carrefour-api-tests\target\test-classes;C:\Users\m.araujo.parmacene\OneDrive - Avanade\Desktop\carrefour-api-tests\carrefour-api-tests\target\classes;C:\Users\m.araujo.parmacene\.m2\repository\io\rest-assured\rest-assured\5.3.0\rest-assured-5.3.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\groovy\groovy\4.0.6\groovy-4.0.6.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\groovy\groovy-xml\4.0.6\groovy-xml-4.0.6.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\m.araujo.parmacene\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\m.araujo.parmacene\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\httpcomponents\httpmime\4.5.13\httpmime-4.5.13.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\ccil\cowan\tagsoup\tagsoup\1.2.1\tagsoup-1.2.1.jar;C:\Users\m.araujo.parmacene\.m2\repository\io\rest-assured\json-path\5.3.0\json-path-5.3.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\groovy\groovy-json\4.0.6\groovy-json-4.0.6.jar;C:\Users\m.araujo.parmacene\.m2\repository\io\rest-assured\rest-assured-common\5.3.0\rest-assured-common-5.3.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\io\rest-assured\xml-path\5.3.0\xml-path-5.3.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\commons\commons-lang3\3.11\commons-lang3-3.11.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.3\junit-jupiter-5.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.3\junit-jupiter-api-5.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\platform\junit-platform-commons\1.9.3\junit-platform-commons-1.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.3\junit-jupiter-params-5.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.3\junit-jupiter-engine-5.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\platform\junit-platform-engine\1.9.3\junit-platform-engine-1.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Sao_Paulo"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.boot.library.path" value="C:\Java\jdk-17.0.12\bin"/>
+    <property name="sun.java.command" value="C:\Users\m.araujo.parmacene\AppData\Local\Temp\surefire7644726091336087953\surefirebooter-20250726153154910_3.jar C:\Users\m.araujo.parmacene\AppData\Local\Temp\surefire7644726091336087953 2025-07-26T15-31-52_336-jvmRun1 surefire-20250726153154910_1tmp surefire_0-20250726153154910_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\m.araujo.parmacene\OneDrive - Avanade\Desktop\carrefour-api-tests\carrefour-api-tests\target\test-classes;C:\Users\m.araujo.parmacene\OneDrive - Avanade\Desktop\carrefour-api-tests\carrefour-api-tests\target\classes;C:\Users\m.araujo.parmacene\.m2\repository\io\rest-assured\rest-assured\5.3.0\rest-assured-5.3.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\groovy\groovy\4.0.6\groovy-4.0.6.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\groovy\groovy-xml\4.0.6\groovy-xml-4.0.6.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\m.araujo.parmacene\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\m.araujo.parmacene\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\httpcomponents\httpmime\4.5.13\httpmime-4.5.13.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\ccil\cowan\tagsoup\tagsoup\1.2.1\tagsoup-1.2.1.jar;C:\Users\m.araujo.parmacene\.m2\repository\io\rest-assured\json-path\5.3.0\json-path-5.3.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\groovy\groovy-json\4.0.6\groovy-json-4.0.6.jar;C:\Users\m.araujo.parmacene\.m2\repository\io\rest-assured\rest-assured-common\5.3.0\rest-assured-common-5.3.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\io\rest-assured\xml-path\5.3.0\xml-path-5.3.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apache\commons\commons-lang3\3.11\commons-lang3-3.11.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.3\junit-jupiter-5.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.3\junit-jupiter-api-5.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\platform\junit-platform-commons\1.9.3\junit-platform-commons-1.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.3\junit-jupiter-params-5.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.3\junit-jupiter-engine-5.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\junit\platform\junit-platform-engine\1.9.3\junit-platform-engine-1.9.3.jar;C:\Users\m.araujo.parmacene\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\m.araujo.parmacene"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-07-16"/>
+    <property name="java.home" value="C:\Java\jdk-17.0.12"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\m.araujo.parmacene\OneDrive - Avanade\Desktop\carrefour-api-tests\carrefour-api-tests"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\m.araujo.parmacene\AppData\Local\Temp\surefire7644726091336087953\surefirebooter-20250726153154910_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.12+8-LTS-286"/>
+    <property name="user.name" value="m.araujo.parmacene"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\m.araujo.parmacene\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\MARAUJ~1.PAR\AppData\Local\Temp\"/>
+    <property name="java.version" value="17.0.12"/>
+    <property name="user.dir" value="C:\Users\m.araujo.parmacene\OneDrive - Avanade\Desktop\carrefour-api-tests\carrefour-api-tests"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Java\jdk-17.0.12\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files (x86)\IBM\Personal Communications\;C:\Program Files (x86)\IBM\Trace Facility\;C:\Users\m.araujo.parmacene\AppData\Local\Programs\Python\Launcher\;C:\Users\m.araujo.parmacene\AppData\Local\Microsoft\WindowsApps;C:\Users\m.araujo.parmacene\AppData\Local\Programs\Microsoft VS Code\bin;C:\Java\jdk-17.0.12\bin;C:\Maven\apache-maven-3.9.9\bin;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.12+8-LTS-286"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="test200RequestsInParallel" classname="br.com.carrefour.api.tests.LoadTest" time="2.229">
+    <system-out><![CDATA[Status: 200 | Tempo: 361 ms
+Status: 200 | Tempo: 362 ms
+Status: 200 | Tempo: 373 ms
+Status: 200 | Tempo: 368 ms
+Status: 200 | Tempo: 377 ms
+Status: 200 | Tempo: 368 ms
+Status: 200 | Tempo: 371 ms
+Status: 200 | Tempo: 373 ms
+Status: 200 | Tempo: 398 ms
+Status: 200 | Tempo: 333 ms
+Status: 200 | Tempo: 347 ms
+Status: 200 | Tempo: 363 ms
+Status: 200 | Tempo: 376 ms
+Status: 200 | Tempo: 373 ms
+Status: 200 | Tempo: 391 ms
+Status: 200 | Tempo: 350 ms
+Status: 200 | Tempo: 399 ms
+Status: 200 | Tempo: 400 ms
+Status: 200 | Tempo: 424 ms
+Status: 200 | Tempo: 448 ms
+Status: 200 | Tempo: 459 ms
+Status: 200 | Tempo: 484 ms
+Status: 200 | Tempo: 486 ms
+Status: 200 | Tempo: 493 ms
+Status: 200 | Tempo: 494 ms
+Status: 200 | Tempo: 579 ms
+Status: 200 | Tempo: 552 ms
+Status: 200 | Tempo: 559 ms
+Status: 200 | Tempo: 552 ms
+Status: 200 | Tempo: 583 ms
+Status: 200 | Tempo: 565 ms
+Status: 200 | Tempo: 580 ms
+Status: 200 | Tempo: 598 ms
+Status: 200 | Tempo: 590 ms
+Status: 200 | Tempo: 670 ms
+Status: 200 | Tempo: 655 ms
+Status: 200 | Tempo: 684 ms
+Status: 200 | Tempo: 651 ms
+Status: 200 | Tempo: 737 ms
+Status: 200 | Tempo: 699 ms
+Status: 200 | Tempo: 727 ms
+Status: 200 | Tempo: 733 ms
+Status: 200 | Tempo: 853 ms
+Status: 200 | Tempo: 863 ms
+Status: 200 | Tempo: 866 ms
+Status: 200 | Tempo: 879 ms
+Status: 200 | Tempo: 891 ms
+Status: 200 | Tempo: 896 ms
+Status: 200 | Tempo: 956 ms
+Status: 200 | Tempo: 970 ms
+Status: 200 | Tempo: 998 ms
+Status: 200 | Tempo: 987 ms
+Status: 200 | Tempo: 980 ms
+Status: 200 | Tempo: 994 ms
+Status: 200 | Tempo: 992 ms
+Status: 200 | Tempo: 1033 ms
+Status: 200 | Tempo: 1013 ms
+Status: 200 | Tempo: 1007 ms
+Status: 200 | Tempo: 1045 ms
+Status: 200 | Tempo: 1012 ms
+Status: 200 | Tempo: 1054 ms
+Status: 200 | Tempo: 1076 ms
+Status: 200 | Tempo: 1123 ms
+Status: 200 | Tempo: 1128 ms
+Status: 200 | Tempo: 1082 ms
+Status: 200 | Tempo: 1082 ms
+Status: 200 | Tempo: 1128 ms
+Status: 200 | Tempo: 1082 ms
+Status: 200 | Tempo: 1090 ms
+Status: 200 | Tempo: 1128 ms
+Status: 200 | Tempo: 1101 ms
+Status: 200 | Tempo: 1143 ms
+Status: 200 | Tempo: 1153 ms
+Status: 200 | Tempo: 1158 ms
+Status: 200 | Tempo: 1147 ms
+Status: 200 | Tempo: 1165 ms
+Status: 200 | Tempo: 1162 ms
+Status: 200 | Tempo: 1198 ms
+Status: 200 | Tempo: 1197 ms
+Status: 200 | Tempo: 1158 ms
+Status: 200 | Tempo: 1165 ms
+Status: 200 | Tempo: 1163 ms
+Status: 200 | Tempo: 1173 ms
+Status: 200 | Tempo: 1167 ms
+Status: 200 | Tempo: 1218 ms
+Status: 200 | Tempo: 1180 ms
+Status: 200 | Tempo: 1158 ms
+Status: 200 | Tempo: 1178 ms
+Status: 200 | Tempo: 1177 ms
+Status: 200 | Tempo: 1176 ms
+Status: 200 | Tempo: 1186 ms
+Status: 200 | Tempo: 1189 ms
+Status: 200 | Tempo: 1187 ms
+Status: 200 | Tempo: 1212 ms
+Status: 200 | Tempo: 1186 ms
+Status: 200 | Tempo: 1165 ms
+Status: 200 | Tempo: 894 ms
+Status: 200 | Tempo: 1154 ms
+Status: 200 | Tempo: 881 ms
+Status: 200 | Tempo: 896 ms
+Status: 200 | Tempo: 897 ms
+Status: 200 | Tempo: 900 ms
+Status: 200 | Tempo: 920 ms
+Status: 200 | Tempo: 920 ms
+Status: 200 | Tempo: 892 ms
+Status: 200 | Tempo: 875 ms
+Status: 200 | Tempo: 901 ms
+Status: 200 | Tempo: 939 ms
+Status: 200 | Tempo: 898 ms
+Status: 200 | Tempo: 860 ms
+Status: 200 | Tempo: 875 ms
+Status: 200 | Tempo: 876 ms
+Status: 200 | Tempo: 846 ms
+Status: 200 | Tempo: 800 ms
+Status: 200 | Tempo: 787 ms
+Status: 200 | Tempo: 756 ms
+Status: 200 | Tempo: 720 ms
+Status: 200 | Tempo: 816 ms
+Status: 200 | Tempo: 834 ms
+Status: 200 | Tempo: 891 ms
+Status: 200 | Tempo: 788 ms
+Status: 200 | Tempo: 697 ms
+Status: 200 | Tempo: 1332 ms
+Status: 200 | Tempo: 730 ms
+Status: 200 | Tempo: 695 ms
+Status: 200 | Tempo: 710 ms
+Status: 200 | Tempo: 677 ms
+Status: 200 | Tempo: 1268 ms
+Status: 200 | Tempo: 1261 ms
+Status: 200 | Tempo: 660 ms
+Status: 200 | Tempo: 635 ms
+Status: 200 | Tempo: 696 ms
+Status: 200 | Tempo: 604 ms
+Status: 200 | Tempo: 683 ms
+Status: 200 | Tempo: 589 ms
+Status: 200 | Tempo: 574 ms
+Status: 200 | Tempo: 643 ms
+Status: 200 | Tempo: 920 ms
+Status: 200 | Tempo: 604 ms
+Status: 200 | Tempo: 615 ms
+Status: 200 | Tempo: 531 ms
+Status: 200 | Tempo: 442 ms
+Status: 200 | Tempo: 470 ms
+Status: 200 | Tempo: 455 ms
+Status: 200 | Tempo: 485 ms
+Status: 200 | Tempo: 509 ms
+Status: 200 | Tempo: 490 ms
+Status: 200 | Tempo: 373 ms
+Status: 200 | Tempo: 403 ms
+Status: 200 | Tempo: 401 ms
+Status: 200 | Tempo: 379 ms
+Status: 200 | Tempo: 393 ms
+Status: 200 | Tempo: 396 ms
+Status: 200 | Tempo: 460 ms
+Status: 200 | Tempo: 454 ms
+Status: 200 | Tempo: 547 ms
+Status: 200 | Tempo: 504 ms
+Status: 200 | Tempo: 561 ms
+Status: 200 | Tempo: 581 ms
+Status: 200 | Tempo: 564 ms
+Status: 200 | Tempo: 1098 ms
+Status: 200 | Tempo: 554 ms
+Status: 200 | Tempo: 589 ms
+Status: 200 | Tempo: 580 ms
+Status: 200 | Tempo: 588 ms
+Status: 200 | Tempo: 596 ms
+Status: 200 | Tempo: 598 ms
+Status: 200 | Tempo: 600 ms
+Status: 200 | Tempo: 603 ms
+Status: 200 | Tempo: 589 ms
+Status: 200 | Tempo: 537 ms
+Status: 200 | Tempo: 609 ms
+Status: 200 | Tempo: 543 ms
+Status: 200 | Tempo: 521 ms
+Status: 200 | Tempo: 531 ms
+Status: 200 | Tempo: 546 ms
+Status: 200 | Tempo: 549 ms
+Status: 200 | Tempo: 572 ms
+Status: 200 | Tempo: 568 ms
+Status: 200 | Tempo: 581 ms
+Status: 200 | Tempo: 595 ms
+Status: 200 | Tempo: 598 ms
+Status: 200 | Tempo: 589 ms
+Status: 200 | Tempo: 581 ms
+Status: 200 | Tempo: 563 ms
+Status: 200 | Tempo: 588 ms
+Status: 200 | Tempo: 571 ms
+Status: 200 | Tempo: 607 ms
+Status: 200 | Tempo: 578 ms
+Status: 200 | Tempo: 613 ms
+Status: 200 | Tempo: 586 ms
+Status: 200 | Tempo: 599 ms
+Status: 200 | Tempo: 583 ms
+Status: 200 | Tempo: 604 ms
+Status: 200 | Tempo: 621 ms
+Status: 200 | Tempo: 622 ms
+Status: 200 | Tempo: 597 ms
+Status: 200 | Tempo: 648 ms
+Status: 200 | Tempo: 652 ms
+Status: 200 | Tempo: 925 ms
+âœ… Todas as 200 requisiÃ§Ãµes foram concluÃ­das.
+â�±ï¸� Tempo total: 2211 ms
+]]></system-out>
+  </testcase>
+</testsuite>
