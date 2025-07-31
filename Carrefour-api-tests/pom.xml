@@ -2,6 +2,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>br.com.carrefour</groupId>
@@ -15,7 +16,7 @@
   </properties>
 
   <dependencies>
-    <!-- RestAssured -->
+    <!-- RestAssured para testes de API -->
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
@@ -31,7 +32,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Hamcrest (matchers para validações) -->
+    <!-- Hamcrest para matchers -->
     <dependency>
       <groupId>org.hamcrest</groupId>
       <artifactId>hamcrest</artifactId>
@@ -42,14 +43,17 @@
 
   <build>
     <plugins>
-      <!-- Plugin para executar testes -->
+      <!-- Plugin para executar testes com JUnit 5 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M7</version>
+        <version>3.0.0-M9</version>
+        <configuration>
+          <useModulePath>false</useModulePath> <!-- Necessário para Java 17 + JUnit 5 -->
+        </configuration>
       </plugin>
 
-      <!-- Plugin do Allure para relatórios -->
+      <!-- Plugin do Allure para geração de relatórios -->
       <plugin>
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-maven</artifactId>
@@ -57,4 +61,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>
