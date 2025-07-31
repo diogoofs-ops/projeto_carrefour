@@ -1,10 +1,6 @@
 name: API Testes Automatizados
 
-on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main, develop ]
+on: pull_request
 
 jobs:
   run-api-tests:
