@@ -2,23 +2,33 @@ name: API Testes Automatizados
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
-  test:
+  run-api-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Clonar repositório
+      - name: 🔄 Checkout do código
         uses: actions/checkout@v3
 
       - name: ☕ Instalar Java
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'  # ou a versão que você usa
+          java-version: '17'
 
-      - name: 📦 Instalar dependências e rodar testes
-        run: mvn clean test
+      - name: 📦 Instalar dependências
+        run: mvn clean install -DskipTests
+
+      - name: 🧪 Executar testes com RestAssured
+        run: mvn test
+
+      - name: 📊 Publicar relatórios de teste
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: relatorios-testes
+          path: target/surefire-reports/
