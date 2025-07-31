@@ -1,6 +1,10 @@
 name: API Testes Automatizados
 
-on: push
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
 
 jobs:
   run-api-tests:
@@ -20,7 +24,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: 🧪 Executar testes com RestAssured
-        run: mvn -X clean test
+        run: mvn test
 
       - name: 📊 Publicar relatórios de teste
         if: always()
