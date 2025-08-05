@@ -57,4 +57,14 @@ public class SignUpPage {
         logger.info("Clicando no botão OK Sign Up");
         driver.findElement(OKSIGNUP_BUTTON).click();
     }
+
+    private By mensagemSucessoSignUp = By.xpath("//android.widget.TextView[contains(@text, 'You successfully signed up!')]");
+
+    public boolean isMensagemSignUpSucessoVisivel() {
+        try {
+            return driver.findElement(mensagemSucessoSignUp).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

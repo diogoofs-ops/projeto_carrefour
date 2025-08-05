@@ -50,6 +50,15 @@ public class NavegarEntreTelasPage {
         logger.info("Navegando para a tela Drag");
         driver.findElement(DRAG_SCREEN).click();
     }
+    private By tituloTelaDrag = By.xpath("//android.widget.TextView[@text='Drag and Drop']");
+
+    public boolean isTelaDragVisivel() {
+        try {
+            return driver.findElement(tituloTelaDrag).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
 
 

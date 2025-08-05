@@ -19,6 +19,7 @@ public class LoginPage {
     private static final By LOGIN_BUTTON = By.xpath("//*[@content-desc='button-LOGIN']/*[1]");
     private static final By LOGIN_SCREEN = By.xpath("//android.view.View[@content-desc='Login']");
     private static final By OK_BUTTON = By.id("android:id/button1");
+    private static final By HOME_INDICATOR = By.xpath("//android.widget.TextView[contains(@text, 'You are logged in!')]");
 
     public LoginPage(AppiumDriver driver) {
         this.driver = driver;
@@ -53,6 +54,14 @@ public class LoginPage {
         logger.info("Fechando o aplicativo");
         if (driver != null) {
             driver.quit();
+        }
+    }
+    public boolean isLoginBemSucedido() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(HOME_INDICATOR)).isDisplayed();
+        } catch (Exception e) {
+            return false;
         }
     }
 }

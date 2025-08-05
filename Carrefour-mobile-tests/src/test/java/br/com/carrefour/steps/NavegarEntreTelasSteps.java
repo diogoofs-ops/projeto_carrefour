@@ -2,14 +2,15 @@ package br.com.carrefour.steps;
 
 import br.com.carrefour.pages.LoginPage;
 import br.com.carrefour.pages.NavegarEntreTelasPage;
-import br.com.carrefour.pages.SignUpPage;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.response.Response;
 import org.junit.Assert;
 import utils.DriverFactory;
+import utils.LogUtil;
 import utils.ScreenshotUtil;
 
 import java.net.MalformedURLException;
@@ -19,6 +20,7 @@ import static utils.DriverFactory.driver;
 public class NavegarEntreTelasSteps {
     LoginPage loginPage;
     NavegarEntreTelasPage navegarEntreTelasPage;
+    Response response;
 
 
     @Given("que o usuario esteja na Home do app")
@@ -50,6 +52,17 @@ public class NavegarEntreTelasSteps {
         Thread.sleep(2000);
         navegarEntreTelasPage.clicarNoDrag();
         Thread.sleep(2000);
+
+        // ✅ Validação com mensagem de erro clara
+        if (!navegarEntreTelasPage.isTelaDragVisivel()) {
+            Assert.fail("❌ A tela de Drag não foi exibida após a navegação.");
+        }
+
+        Assert.assertTrue("✅ Tela de Drag foi exibida após a navegação.", navegarEntreTelasPage.isTelaDragVisivel());
+
+        ScreenshotUtil.captureScreenshot(driver, "tela_drag_navegada");
+        LogUtil.salvarLog("resultado.txt", "Login realizado via interface.");
+
         loginPage = new LoginPage(driver);
         loginPage.fecharApp();
     }

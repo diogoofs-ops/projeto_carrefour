@@ -33,7 +33,6 @@ public class FormsDropdownAppiumPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
     public void informarUmTextoNoInputField(String field)  {
         logger.info("Informando texto no campo de input: " + field);
         driver.findElement(INPUT_FIELD).sendKeys(field);
@@ -71,5 +70,15 @@ public class FormsDropdownAppiumPage {
     public void clicarNoOk() {
         logger.info("Clicando no botão 'OK' da caixa de diálogo");
         driver.findElement(OK_BUTTON).click();
+    }
+
+    private By mensagemConfirmacao = By.xpath("//android.widget.TextView[@text='This button is active']");
+
+    public boolean isConfirmacaoOkExibida() {
+        try {
+            return driver.findElement(mensagemConfirmacao).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
     }

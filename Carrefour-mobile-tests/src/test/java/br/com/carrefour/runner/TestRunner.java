@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-report.html"},
         features = "src/test/resources/features",
-        glue = "br.com.carrefour.steps",
+        glue = {"br.com.carrefour.steps", "br.com.carrefour.hooks"},
         tags = ""
 )
 public class TestRunner {

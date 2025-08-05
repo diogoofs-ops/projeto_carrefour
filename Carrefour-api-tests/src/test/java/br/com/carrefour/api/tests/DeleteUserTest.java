@@ -4,15 +4,21 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DeleteUserTest {
 
     @Test
-    public void testDeleteUserDiogoFerrera() {
+    public void testDeleteUserDiogoFerrera() throws IOException {
         // 1. Buscar todos os usuários
         Response getResponse = given()
                 .when()
@@ -24,17 +30,14 @@ public class DeleteUserTest {
         // 2. Procurar o ID do usuário com nome "Diogo Ferrera"
         String userId = null;
         for (Map<String, String> usuario : usuarios) {
-            if ("Diogo Ferrera".equals(usuario.get("nome"))) {
+            if ("Diogo Silva1".equals(usuario.get("nome"))) {
                 userId = usuario.get("_id");
                 break;
             }
         }
 
         // 3. Validar se encontrou o usuário
-        if (userId == null) {
-            System.out.println("❌ Usuário 'Diogo Ferrera' não encontrado.");
-            return;
-        }
+        assertNotNull(userId, "❌ Usuário 'Diogo Silva1' não encontrado.");
 
         // 4. Enviar requisição DELETE
         Response deleteResponse = given()
@@ -45,15 +48,22 @@ public class DeleteUserTest {
         int statusCode = deleteResponse.getStatusCode();
         String responseBody = deleteResponse.getBody().asString();
 
-        // 5. Verificar resultado
+        // 5. Salvar resposta em arquivo
+        Path caminhoLog = Paths.get("logs/resultado.txt");
+        Files.createDirectories(caminhoLog.getParent());
+        Files.writeString(caminhoLog, responseBody, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+
+        // 6. Validar conteúdo do log
+        String conteudoArquivo = Files.readString(caminhoLog);
+        assertEquals(responseBody, conteudoArquivo, "O conteúdo do log deve ser igual à resposta da API");
+
+        // 7. Validar resposta da API
         if (statusCode == 200) {
-            System.out.println("✅ Usuário deletado com sucesso!");
+            assertTrue(responseBody.contains("Registro excluído com sucesso"), "Mensagem de sucesso esperada");
         } else if (statusCode == 400) {
-            System.out.println("⚠️ Não foi possível deletar o usuário. Ele pode já ter sido excluído ou não existir.");
-            System.out.println("Resposta da API: " + responseBody);
+            assertTrue(responseBody.contains("Não é permitido excluir usuário que possui carrinho"), "Mensagem de erro esperada");
         } else {
-            System.out.println("❌ Erro inesperado ao tentar deletar o usuário. Status: " + statusCode);
-            System.out.println("Resposta da API: " + responseBody);
+            fail("❌ Status inesperado: " + statusCode + "\nResposta: " + responseBody);
         }
     }
 }

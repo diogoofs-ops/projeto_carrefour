@@ -4,15 +4,21 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UpdateUserTests {
 
     @Test
-    public void testUpdateUserIfNeeded() {
+    public void testUpdateUserIfNeeded() throws IOException {
         // 1. Buscar todos os usuários
         Response response = given()
                 .when()
@@ -21,38 +27,36 @@ public class UpdateUserTests {
         JsonPath jsonPath = response.jsonPath();
         List<Map<String, String>> usuarios = jsonPath.getList("usuarios");
 
-        // 2. Procurar o usuário "Diogo Ferrera"
+        // 2. Procurar o usuário "Diogo Silva1"
         Map<String, String> usuarioAlvo = null;
         for (Map<String, String> usuario : usuarios) {
-            if ("Diogo Atualizado".equals(usuario.get("nome"))) {
+            if ("Diogo Silva1".equals(usuario.get("nome"))) {
                 usuarioAlvo = usuario;
                 break;
             }
         }
 
-        if (usuarioAlvo == null) {
-            System.out.println("❌ Usuário 'Diogo Atualizado' não encontrado.");
-            return;
-        }
+        // 3. Validar se encontrou o usuário
+        assertNotNull(usuarioAlvo, "❌ Usuário 'Diogo Silva1' não encontrado.");
 
         String userId = usuarioAlvo.get("_id");
 
-        // 3. Dados desejados para atualização
-        String novoNome = "Diogo Atualizado";
-        String novoEmail = "diogo.atualizado@carrefour.com";
-        String novaSenha = "senhaAtualizada123";
+        // 4. Dados desejados para atualização
+        String novoNome = "Diogo Silva1";
+        String novoEmail = "diogo.silva1@carrefour.com";
+        String novaSenha = "senhaAtualizada1234";
         String novoAdmin = "true";
 
-        // 4. Verificar se os dados já estão atualizados
+        // 5. Verificar se os dados já estão atualizados
         boolean jaAtualizado = novoNome.equals(usuarioAlvo.get("nome")) &&
                 novoEmail.equals(usuarioAlvo.get("email")) &&
                 novaSenha.equals(usuarioAlvo.get("password")) &&
                 novoAdmin.equals(usuarioAlvo.get("administrador"));
 
         if (jaAtualizado) {
-            System.out.println("ℹ️ O usuário já está com os dados atualizados. Nenhuma ação necessária.");
+            assertTrue(jaAtualizado, "ℹ️ O usuário já está com os dados atualizados. Nenhuma ação necessária.");
         } else {
-            // 5. Enviar PUT para atualizar
+            // 6. Enviar PUT para atualizar
             String updatedData = "{\n" +
                     "  \"nome\": \"" + novoNome + "\",\n" +
                     "  \"email\": \"" + novoEmail + "\",\n" +
@@ -69,12 +73,18 @@ public class UpdateUserTests {
             String mensagem = updateResponse.jsonPath().getString("message");
             int statusCode = updateResponse.getStatusCode();
 
-            if (statusCode == 200 && mensagem.contains("Registro alterado com sucesso")) {
-                System.out.println("✅ Usuário atualizado com sucesso!");
-            } else {
-                System.out.println("❌ Falha ao atualizar. Status: " + statusCode);
-                System.out.println("Mensagem: " + mensagem);
-            }
+            // ✅ 7. Salvar resposta da API em arquivo
+            Path caminhoLog = Paths.get("logs/resultado.txt");
+            Files.createDirectories(caminhoLog.getParent());
+            Files.writeString(caminhoLog, updateResponse.asString(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+
+            // 8. Validar conteúdo do log
+            String conteudoArquivo = Files.readString(caminhoLog);
+            assertEquals(updateResponse.asString(), conteudoArquivo, "O conteúdo do log deve ser igual à resposta da API");
+
+            // 9. Verificar resultado
+            assertEquals(200, statusCode, "Status esperado: 200");
+            assertTrue(mensagem.contains("Registro alterado com sucesso"), "Mensagem esperada na resposta");
         }
     }
 }

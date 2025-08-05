@@ -6,8 +6,12 @@ import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.response.Response;
+import org.junit.Assert;
 import utils.DriverFactory;
+import utils.LogUtil;
 import utils.ScreenshotUtil;
+
 import java.net.MalformedURLException;
 
 
@@ -18,6 +22,7 @@ public class SignUpSteps {
 
     LoginPage loginPage;
     SignUpPage signUpPage;
+    Response response;
 
 
     @Given("que o usuario esteja na tela de Sign up")
@@ -27,7 +32,8 @@ public class SignUpSteps {
 
         signUpPage.clicarLoginScreen();
         Thread.sleep(3000);
-        signUpPage.clicarSignUpScreen();;
+        signUpPage.clicarSignUpScreen();
+        ;
         ScreenshotUtil.captureScreenshot(driver, "tela_SignUplogin");
         Thread.sleep(2000);
     }
@@ -44,11 +50,18 @@ public class SignUpSteps {
     }
 
     @Then("devo validar sign up com sucesso")
-    public void devo_validar_sign_up_com_sucesso(){
+    public void devo_validar_sign_up_com_sucesso() {
+
+        if (!signUpPage.isMensagemSignUpSucessoVisivel()) {
+            Assert.fail("❌ A mensagem de sucesso do Sign Up não foi exibida.");
+        }
+
+        Assert.assertTrue("✅ Mensagem de sucesso do Sign Up foi exibida.", signUpPage.isMensagemSignUpSucessoVisivel());
+
+        ScreenshotUtil.captureScreenshot(driver, "sign_up_sucesso");
+        LogUtil.salvarLog("resultado.txt", "Login realizado via interface.");
         signUpPage.clicarOkSignUp();
         loginPage = new LoginPage(driver);
         loginPage.fecharApp();
-
     }
 }
-

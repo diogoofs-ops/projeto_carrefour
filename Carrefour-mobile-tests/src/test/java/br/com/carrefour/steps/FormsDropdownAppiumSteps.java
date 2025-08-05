@@ -9,7 +9,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.response.Response;
+import org.junit.Assert;
 import utils.DriverFactory;
+import utils.LogUtil;
 import utils.ScreenshotUtil;
 
 import java.net.MalformedURLException;
@@ -20,11 +23,11 @@ import static utils.DriverFactory.driver;
 public class FormsDropdownAppiumSteps {
 
 
-
     LoginPage loginPage;
     NavegarEntreTelasPage navegarEntreTelasPage;
     FormsDropdownAppiumPage formsDropdownAppiumPage;
     FormsDropdownWebDriverPage formsDropdownWebDriverPage;
+    Response response;
 
     @Given("que o usuario esteja na tela de Forms Appium")
     public void que_o_usuario_esteja_na_tela_de_Forms_Appium() throws MalformedURLException, InterruptedException {
@@ -63,8 +66,19 @@ public class FormsDropdownAppiumSteps {
     @Then("devo validar o botao active com OK para esse menu Appium")
     public void devo_validar_o_botao_active_com_OK_para_esse_menu_Appium() throws InterruptedException {
         formsDropdownAppiumPage.clicarNoActive();
+
+        // ✅ Verifica se a confirmação foi exibida
+        if (!formsDropdownAppiumPage.isConfirmacaoOkExibida()) {
+            Assert.fail("❌ A confirmação 'OK' não foi exibida após clicar no botão Active.");
+        }
+
+        Assert.assertTrue("✅ Confirmação após clicar em OK foi exibida com sucesso", formsDropdownAppiumPage.isConfirmacaoOkExibida());
+
         formsDropdownAppiumPage.clicarNoOk();
+
         Thread.sleep(2000);
+
+        LogUtil.salvarLog("resultado.txt", "Login realizado via interface.");
         loginPage = new LoginPage(driver);
         loginPage.fecharApp();
     }

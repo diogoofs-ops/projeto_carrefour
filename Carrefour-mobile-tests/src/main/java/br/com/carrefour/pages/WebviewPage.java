@@ -2,13 +2,11 @@ package br.com.carrefour.pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Set;
 import java.util.logging.Logger;
 
 public class WebviewPage {
@@ -27,20 +25,24 @@ public class WebviewPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void clicarNoClose() {
 
+    public void clicarNoClose() {
         logger.info("Clicando no botão de fechar");
-        driver.findElement(CLOSE_BUTTON).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement closeButton = wait.until(ExpectedConditions.elementToBeClickable(CLOSE_BUTTON));
+        closeButton.click();
     }
 
     public void clicarNoGetStarted() {
-
         logger.info("Clicando no botão de Get Started");
-        driver.findElement(GETSTARTED_BUTTON).click();
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement getStartedButton = wait.until(ExpectedConditions.elementToBeClickable(GETSTARTED_BUTTON));
+        getStartedButton.click();
     }
+
     public String validarTextoInformado() {
         logger.info("Aguardando visibilidade do texto 'Getting Started'");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         String mensagem = wait.until(ExpectedConditions.visibilityOfElementLocated(VALID_MESSAGE)).getText();
         logger.info("Texto validado com sucesso: " + mensagem);
         return mensagem;

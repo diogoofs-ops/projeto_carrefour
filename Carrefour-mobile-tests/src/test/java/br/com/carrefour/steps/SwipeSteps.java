@@ -7,8 +7,10 @@ import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.response.Response;
 import org.junit.Assert;
 import utils.DriverFactory;
+import utils.LogUtil;
 import utils.ScreenshotUtil;
 
 import java.net.MalformedURLException;
@@ -21,6 +23,7 @@ public class SwipeSteps {
     private LoginPage loginPage;
     private NavegarEntreTelasPage navegarEntreTelasPage;
     private SwipePage swipePage;
+    Response response;
 
     @Given("que o usuario esteja na tela de Swipe")
     public void que_o_usuario_esteja_na_tela_de_Swipe() throws MalformedURLException {
@@ -43,16 +46,17 @@ public class SwipeSteps {
 
     @Then("devo validar Swipe com sucesso")
     public void devo_validar_Swipe_com_sucesso() {
-
         String mensagem = swipePage.obterMensagemSwipe();
 
-        Assert.assertTrue("Mensagem de swipe não corresponde ao esperado.",
-                mensagem.contains("GREAT COMMUNITY"));
+        // ✅ Validação com mensagem de erro clara
+        if (mensagem == null || !mensagem.contains("GREAT COMMUNITY")) {
+            Assert.fail("❌ A mensagem esperada 'GREAT COMMUNITY' não foi exibida após o swipe. Mensagem recebida: '" + mensagem + "'");
+        }
+
+        Assert.assertTrue("✅ Mensagem de swipe correspondente ao esperado.", mensagem.contains("GREAT COMMUNITY"));
 
         ScreenshotUtil.captureScreenshot(driver, "tela_sucesso");
-
-
+        LogUtil.salvarLog("resultado.txt", "Login realizado via interface.");
         loginPage.fecharApp();
-
     }
 }
